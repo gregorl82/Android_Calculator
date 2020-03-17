@@ -2,12 +2,14 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     var lastInput: String = ""
     var operation: String? = null
+    var firstNumber: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,20 +60,63 @@ class MainActivity : AppCompatActivity() {
                 updateCalcDisplay('0')
             }
         }
+
+        button_add.setOnClickListener {
+            storeFirstNumber()
+            operation = "add"
+            clearDisplay()
+        }
+
+        button_equals.setOnClickListener {
+            val secondNumber: Double = calcDisplay.text.toString().toDouble()
+
+            if (operation == "add") {
+                calcDisplay.text = add(firstNumber, secondNumber).toString()
+            }
+        }
     }
 
     private fun updateCalcDisplay(number: Char) {
         val currentDisplayText: String = calcDisplay.text.toString()
-        if (currentDisplayText == "0") {
-            calcDisplay.text = number.toString()
-        } else {
-            calcDisplay.text = currentDisplayText + number.toString()
+
+        if (currentDisplayText.length < 8) {
+
+            if (currentDisplayText == "0") {
+                calcDisplay.text = number.toString()
+            } else {
+                calcDisplay.text = currentDisplayText + number.toString()
+            }
+
+            lastInput = number.toString()
         }
-        lastInput = number.toString()
+
     }
 
     private fun clearDisplay() {
         calcDisplay.text = "0"
         lastInput = ""
+    }
+
+    private fun storeFirstNumber() {
+        val currentDisplayText: String = calcDisplay.text.toString()
+        firstNumber = currentDisplayText.toDouble()
+    }
+
+    // Operations
+
+    private fun add(a: Double, b: Double): Double {
+        return a + b
+    }
+
+    private fun subtract(a: Double, b: Double): Double {
+        return a - b
+    }
+
+    private fun multiply(a: Double, b: Double): Double {
+        return a * b
+    }
+
+    private fun divide(a: Double, b: Double): Double {
+        return a / b
     }
 }
