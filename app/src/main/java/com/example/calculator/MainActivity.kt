@@ -26,6 +26,14 @@ class MainActivity : AppCompatActivity() {
             calcDisplay.text = current.toString()
         }
 
+        button_percent.setOnClickListener {
+            var current: Double = calcDisplay.text.toString().toDouble()
+
+            current /= 100
+
+            calcDisplay.text = current.toString()
+        }
+
         button_num1.setOnClickListener {
             updateCalcDisplay('1')
         }
