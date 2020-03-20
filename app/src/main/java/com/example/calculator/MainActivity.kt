@@ -3,12 +3,14 @@ package com.example.calculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.calculator.Calculator
 
 class MainActivity : AppCompatActivity() {
 
     var lastInput: String = ""
     var operation: String? = null
     var firstNumber: Double = 0.0
+    var calculator = Calculator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,19 +106,19 @@ class MainActivity : AppCompatActivity() {
             val secondNumber: Double = calcDisplay.text.toString().toDouble()
 
             if (operation == "add") {
-                calcDisplay.text = add(firstNumber, secondNumber).toString()
+                calcDisplay.text = calculator.add(firstNumber, secondNumber).toString()
             }
 
             if (operation == "subtract") {
-                calcDisplay.text = subtract(firstNumber, secondNumber).toString()
+                calcDisplay.text = calculator.subtract(firstNumber, secondNumber).toString()
             }
 
             if (operation == "multiply") {
-                calcDisplay.text = multiply(firstNumber, secondNumber).toString()
+                calcDisplay.text = calculator.multiply(firstNumber, secondNumber).toString()
             }
 
             if (operation == "divide") {
-                calcDisplay.text = divide(firstNumber, secondNumber).toString()
+                calcDisplay.text = calculator.divide(firstNumber, secondNumber).toString()
             }
         }
     }
@@ -147,21 +149,4 @@ class MainActivity : AppCompatActivity() {
         firstNumber = currentDisplayText.toDouble()
     }
 
-    // Operations
-
-    private fun add(a: Double, b: Double): Double {
-        return a + b
-    }
-
-    private fun subtract(a: Double, b: Double): Double {
-        return a - b
-    }
-
-    private fun multiply(a: Double, b: Double): Double {
-        return a * b
-    }
-
-    private fun divide(a: Double, b: Double): Double {
-        return a / b
-    }
 }
