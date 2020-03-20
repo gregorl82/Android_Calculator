@@ -2,7 +2,6 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +16,14 @@ class MainActivity : AppCompatActivity() {
 
         button_cancel.setOnClickListener {
             clearDisplay()
+        }
+
+        button_posneg.setOnClickListener {
+            var current: Double = calcDisplay.text.toString().toDouble()
+
+            current = 0 - current
+
+            calcDisplay.text = current.toString()
         }
 
         button_num1.setOnClickListener {
@@ -67,11 +74,41 @@ class MainActivity : AppCompatActivity() {
             clearDisplay()
         }
 
+        button_subtract.setOnClickListener {
+            storeFirstNumber()
+            operation = "subtract"
+            clearDisplay()
+        }
+
+        button_multiply.setOnClickListener {
+            storeFirstNumber()
+            operation = "multiply"
+            clearDisplay()
+        }
+
+        button_divide.setOnClickListener {
+            storeFirstNumber()
+            operation = "divide"
+            clearDisplay()
+        }
+
         button_equals.setOnClickListener {
             val secondNumber: Double = calcDisplay.text.toString().toDouble()
 
             if (operation == "add") {
                 calcDisplay.text = add(firstNumber, secondNumber).toString()
+            }
+
+            if (operation == "subtract") {
+                calcDisplay.text = subtract(firstNumber, secondNumber).toString()
+            }
+
+            if (operation == "multiply") {
+                calcDisplay.text = multiply(firstNumber, secondNumber).toString()
+            }
+
+            if (operation == "divide") {
+                calcDisplay.text = divide(firstNumber, secondNumber).toString()
             }
         }
     }
