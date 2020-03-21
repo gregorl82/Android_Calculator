@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Calculator</string>
+    <string name="cancelButtonText">AC</string>
+    <string name="posnegButtonText">+ / -</string>
+    <string name="percentButtonText">%</string>
+    <string name="divideButtonText">/</string>
+    <string name="num7ButtonText">7</string>
+    <string name="num8ButtonText">8</string>
+    <string name="num9ButtonText">9</string>
+    <string name="multiplyButtonText">x</string>
+    <string name="num4ButtonText">4</string>
+    <string name="num5ButtonText">5</string>
+    <string name="num6ButtonText">6</string>
+    <string name="subtractButtonText">-</string>
+    <string name="num1ButtonText">1</string>
+    <string name="num2ButtonText">2</string>
+    <string name="num3ButtonText">3</string>
+    <string name="addButtonText">+</string>
+    <string name="num0ButtonText">0</string>
+    <string name="decimalButtonText">.</string>
+    <string name="equalsButtonText">=</string>
 </resources>
