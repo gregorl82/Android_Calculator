@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     var operation: String? = null
     var firstNumber: Double = 0.0
     var calculator = Calculator()
+    var decimal: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +79,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        button_decimal.setOnClickListener {
+            if(!decimal) {
+                updateCalcDisplay('.')
+            }
+        }
+
         button_add.setOnClickListener {
             storeFirstNumber()
             operation = "add"
@@ -142,6 +149,7 @@ class MainActivity : AppCompatActivity() {
     private fun clearDisplay() {
         calcDisplay.text = "0"
         lastInput = ""
+        decimal = false
     }
 
     private fun storeFirstNumber() {
