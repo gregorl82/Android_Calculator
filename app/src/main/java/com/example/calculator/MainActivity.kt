@@ -80,8 +80,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_decimal.setOnClickListener {
-            if(!decimal) {
+            if(!decimal && calcDisplay.text.toString() != "0") {
                 updateCalcDisplay('.')
+                decimal = true
             }
         }
 
