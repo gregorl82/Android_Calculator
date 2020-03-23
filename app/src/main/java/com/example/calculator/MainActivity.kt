@@ -77,13 +77,18 @@ class MainActivity : AppCompatActivity() {
             if(lastInput != "") {
                 updateCalcDisplay('0')
             }
+            lastInput = "0"
         }
 
         button_decimal.setOnClickListener {
-            if(!decimal && calcDisplay.text.toString() != "0") {
+            if(calcDisplay.text.toString() == "0") {
+                calcDisplay.text = "0."
+                decimal = true
+            } else if (!decimal) {
                 updateCalcDisplay('.')
                 decimal = true
             }
+
         }
 
         button_add.setOnClickListener {
