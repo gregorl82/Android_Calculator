@@ -3,12 +3,11 @@ package com.example.calculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-import com.example.calculator.Calculator
 
 class MainActivity : AppCompatActivity() {
 
     var lastInput: String = ""
-    var operation: String? = null
+    var operation: Operation? = null
     var firstNumber: Double = 0.0
     var calculator = Calculator()
     var decimal: Boolean = false
@@ -38,54 +37,54 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_num1.setOnClickListener {
-            updateCalcDisplay('1')
+            updateInputDisplay('1')
         }
 
         button_num2.setOnClickListener {
-            updateCalcDisplay('2')
+            updateInputDisplay('2')
         }
 
         button_num3.setOnClickListener {
-            updateCalcDisplay('3')
+            updateInputDisplay('3')
         }
 
         button_num4.setOnClickListener {
-            updateCalcDisplay('4')
+            updateInputDisplay('4')
         }
 
         button_num5.setOnClickListener {
-            updateCalcDisplay('5')
+            updateInputDisplay('5')
         }
 
         button_num6.setOnClickListener {
-            updateCalcDisplay('6')
+            updateInputDisplay('6')
         }
 
         button_num7.setOnClickListener {
-            updateCalcDisplay('7')
+            updateInputDisplay('7')
         }
 
         button_num8.setOnClickListener {
-            updateCalcDisplay('8')
+            updateInputDisplay('8')
         }
 
         button_num9.setOnClickListener {
-            updateCalcDisplay('9')
+            updateInputDisplay('9')
         }
 
         button_num0.setOnClickListener {
             if(lastInput != "") {
-                updateCalcDisplay('0')
+                updateInputDisplay('0')
             }
             lastInput = "0"
         }
 
         button_decimal.setOnClickListener {
             if(calcDisplay.text.toString() == "0") {
-                calcDisplay.text = "0."
+                inputDisplay.text = "0."
                 decimal = true
             } else if (!decimal) {
-                updateCalcDisplay('.')
+                updateInputDisplay('.')
                 decimal = true
             }
 
@@ -93,25 +92,25 @@ class MainActivity : AppCompatActivity() {
 
         button_add.setOnClickListener {
             storeFirstNumber()
-            operation = "add"
+            operation = Operation.ADDITION
             clearDisplay()
         }
 
         button_subtract.setOnClickListener {
             storeFirstNumber()
-            operation = "subtract"
+            operation = Operation.SUBTRACTION
             clearDisplay()
         }
 
         button_multiply.setOnClickListener {
             storeFirstNumber()
-            operation = "multiply"
+            operation = Operation.MULTIPLICATION
             clearDisplay()
         }
 
         button_divide.setOnClickListener {
             storeFirstNumber()
-            operation = "divide"
+            operation = Operation.DIVISION
             clearDisplay()
         }
 
@@ -119,19 +118,19 @@ class MainActivity : AppCompatActivity() {
             val secondNumber: Double = calcDisplay.text.toString().toDouble()
             var result: Double = 0.0
 
-            if (operation == "add") {
+            if (operation == Operation.ADDITION) {
                 result = calculator.add(firstNumber, secondNumber)
             }
 
-            if (operation == "subtract") {
+            if (operation == Operation.SUBTRACTION) {
                 result = calculator.subtract(firstNumber, secondNumber)
             }
 
-            if (operation == "multiply") {
+            if (operation == Operation.MULTIPLICATION) {
                 result = calculator.multiply(firstNumber, secondNumber)
             }
 
-            if (operation == "divide") {
+            if (operation == Operation.DIVISION) {
                 result = calculator.divide(firstNumber, secondNumber)
             }
 
@@ -143,7 +142,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateCalcDisplay(number: Char) {
+    private fun updateInputDisplay(number: Char) {
         val currentDisplayText: String = calcDisplay.text.toString()
 
         if (currentDisplayText.length < 8) {
@@ -160,6 +159,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearDisplay() {
+        inputDisplay.text = " "
         calcDisplay.text = "0"
         lastInput = ""
         decimal = false
@@ -172,6 +172,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun isWhole(number: Double): Boolean {
         return number % 1.toDouble() == 0.toDouble()
+    }
+
+    enum class Operation{
+        ADDITION,
+        SUBTRACTION,
+        MULTIPLICATION,
+        DIVISION
     }
 
 }
