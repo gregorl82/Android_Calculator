@@ -7,39 +7,44 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/calcDisplay"
+        android:id="@+id/inputDisplay"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="2dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
         android:background="#000000"
         android:fontFamily="@font/righteous"
-        android:paddingRight="8dp"
-        android:text="0"
+        android:paddingTop="6dp"
+        android:text="@string/inputDisplayText"
         android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
-        android:textSize="72sp"
-        app:layout_constraintBottom_toTopOf="@+id/inputDisplay"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/calcDisplay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/inputDisplay"
+        android:id="@+id/calcDisplay"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="2dp"
         android:background="#000000"
-        android:text="@string/inputDisplayText"
+        android:fontFamily="@font/righteous"
+        android:paddingStart="2dp"
+        android:paddingEnd="4dp"
+        android:text="@string/calcDisplayText"
         android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
+        android:textSize="72sp"
         app:layout_constraintBottom_toTopOf="@id/button_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@id/inputDisplay" />
 
     <Button
         android:id="@+id/button_cancel"
@@ -51,42 +56,44 @@
         app:layout_constraintBottom_toTopOf="@+id/button_num7"
         app:layout_constraintEnd_toStartOf="@+id/button_posneg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
 
     <Button
         android:id="@+id/button_posneg"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/posnegButtonText"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/button_num8"
         app:layout_constraintEnd_toStartOf="@+id/button_percent"
         app:layout_constraintStart_toEndOf="@+id/button_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
 
     <Button
         android:id="@+id/button_percent"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/percentButtonText"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/button_num9"
         app:layout_constraintEnd_toStartOf="@+id/button_divide"
         app:layout_constraintStart_toEndOf="@+id/button_posneg"
-        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
 
     <Button
         android:id="@+id/button_divide"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF5722"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/divideButtonText"
-        android:textSize="36sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_multiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_percent"
-        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
 
     <Button
         android:id="@+id/button_num7"
@@ -135,9 +142,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF5722"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/multiplyButtonText"
         android:textAllCaps="false"
-        android:textSize="36sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_subtract"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_num9"
@@ -190,8 +198,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF5722"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/subtractButtonText"
-        android:textSize="36sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_num6"
@@ -244,8 +253,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF5722"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/addButtonText"
-        android:textSize="36sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/button_equals"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_num3"
@@ -286,12 +296,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF5722"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/equalsButtonText"
-        android:textSize="36sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/button_decimal"
-        app:layout_constraintTop_toBottomOf="@+id/button_add"
-        app:layout_constraintHorizontal_weight="1"/>
+        app:layout_constraintTop_toBottomOf="@+id/button_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
