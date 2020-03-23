@@ -9,32 +9,49 @@
     <TextView
         android:id="@+id/calcDisplay"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
         android:background="#000000"
+        android:fontFamily="@font/righteous"
         android:paddingRight="8dp"
         android:text="0"
         android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
-        android:textSize="80sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_cancel"
+        android:textSize="72sp"
+        app:layout_constraintBottom_toTopOf="@+id/inputDisplay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/inputDisplay"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="#000000"
+        android:text="@string/inputDisplayText"
+        android:textAlignment="textEnd"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/button_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calcDisplay" />
 
     <Button
         android:id="@+id/button_cancel"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/cancelButtonText"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/button_num7"
         app:layout_constraintEnd_toStartOf="@+id/button_posneg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
 
     <Button
         android:id="@+id/button_posneg"
@@ -45,7 +62,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_num8"
         app:layout_constraintEnd_toStartOf="@+id/button_percent"
         app:layout_constraintStart_toEndOf="@+id/button_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
 
     <Button
         android:id="@+id/button_percent"
@@ -56,25 +73,27 @@
         app:layout_constraintBottom_toTopOf="@+id/button_num9"
         app:layout_constraintEnd_toStartOf="@+id/button_divide"
         app:layout_constraintStart_toEndOf="@+id/button_posneg"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
 
     <Button
         android:id="@+id/button_divide"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF5722"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/divideButtonText"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/button_multiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_percent"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/inputDisplay" />
 
     <Button
         android:id="@+id/button_num7"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num7ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -88,6 +107,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num8ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -101,6 +121,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num9ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -127,6 +148,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num4ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -140,6 +162,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num5ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -153,6 +176,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num6ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -178,6 +202,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num1ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -191,6 +216,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num2ButtonText"
         android:textColor="#EBEBEB"
         android:textSize="36sp"
@@ -204,6 +230,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num3ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -229,28 +256,30 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/num0ButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_decimal"
+        app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_num1"
-        app:layout_constraintHorizontal_weight="2"/>
+        app:layout_constraintTop_toBottomOf="@+id/button_num1" />
 
     <Button
         android:id="@+id/button_decimal"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="#FF3E3535"
+        android:fontFamily="@font/comfortaa_bold"
         android:text="@string/decimalButtonText"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_equals"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/button_num0"
-        app:layout_constraintTop_toBottomOf="@+id/button_num3"
-        app:layout_constraintHorizontal_weight="1"/>
+        app:layout_constraintTop_toBottomOf="@+id/button_num3" />
 
     <Button
         android:id="@+id/button_equals"
