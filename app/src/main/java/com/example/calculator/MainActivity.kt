@@ -117,21 +117,28 @@ class MainActivity : AppCompatActivity() {
 
         button_equals.setOnClickListener {
             val secondNumber: Double = calcDisplay.text.toString().toDouble()
+            var result: Double = 0.0
 
             if (operation == "add") {
-                calcDisplay.text = calculator.add(firstNumber, secondNumber).toString()
+                result = calculator.add(firstNumber, secondNumber)
             }
 
             if (operation == "subtract") {
-                calcDisplay.text = calculator.subtract(firstNumber, secondNumber).toString()
+                result = calculator.subtract(firstNumber, secondNumber)
             }
 
             if (operation == "multiply") {
-                calcDisplay.text = calculator.multiply(firstNumber, secondNumber).toString()
+                result = calculator.multiply(firstNumber, secondNumber)
             }
 
             if (operation == "divide") {
-                calcDisplay.text = calculator.divide(firstNumber, secondNumber).toString()
+                result = calculator.divide(firstNumber, secondNumber)
+            }
+
+            if(isWhole(result)) {
+                calcDisplay.text = result.toInt().toString()
+            } else {
+                calcDisplay.text = result.toString()
             }
         }
     }
@@ -161,6 +168,10 @@ class MainActivity : AppCompatActivity() {
     private fun storeFirstNumber() {
         val currentDisplayText: String = calcDisplay.text.toString()
         firstNumber = currentDisplayText.toDouble()
+    }
+
+    private fun isWhole(number: Double): Boolean {
+        return number % 1.toDouble() == 0.toDouble()
     }
 
 }
