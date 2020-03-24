@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button_cancel.setOnClickListener {
-            clearDisplay()
+            clearDisplays()
         }
 
         button_posneg.setOnClickListener {
@@ -93,30 +93,30 @@ class MainActivity : AppCompatActivity() {
         button_add.setOnClickListener {
             storeFirstNumber()
             operation = Operation.ADDITION
-            clearDisplay()
+            clearDisplays()
         }
 
         button_subtract.setOnClickListener {
             storeFirstNumber()
             operation = Operation.SUBTRACTION
-            clearDisplay()
+            clearDisplays()
         }
 
         button_multiply.setOnClickListener {
             storeFirstNumber()
             operation = Operation.MULTIPLICATION
-            clearDisplay()
+            clearDisplays()
         }
 
         button_divide.setOnClickListener {
             storeFirstNumber()
             operation = Operation.DIVISION
-            clearDisplay()
+            clearDisplays()
         }
 
         button_equals.setOnClickListener {
             val secondNumber: Double = calcDisplay.text.toString().toDouble()
-            var result: Double = 0.0
+            var result = 0.0
 
             if (operation == Operation.ADDITION) {
                 result = calculator.add(firstNumber, secondNumber)
@@ -158,7 +158,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun clearDisplay() {
+    private fun clearDisplays() {
         inputDisplay.text = " "
         calcDisplay.text = "0"
         lastInput = ""
