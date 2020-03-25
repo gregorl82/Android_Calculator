@@ -8,7 +8,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     var currentInput: String = ""
-    var lastInput: String = ""
     var operation: Operation? = null
     var firstInput: Double = 0.0
     var calculator = Calculator()
@@ -95,28 +94,32 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-//        button_add.setOnClickListener {
-//            storeFirstInput()
-//            operation = Operation.ADDITION
-//        }
-//
-//        button_subtract.setOnClickListener {
-//            storeFirstInput()
-//            operation = Operation.SUBTRACTION
-//        }
-//
-//        button_multiply.setOnClickListener {
-//            storeFirstInput()
-//            operation = Operation.MULTIPLICATION
-//        }
-//
-//        button_divide.setOnClickListener {
-//            storeFirstInput()
-//            operation = Operation.DIVISION
-//        }
+        button_add.setOnClickListener {
+            storeFirstInput()
+            inputDisplay.text = inputDisplay.text.toString() + " +"
+            operation = Operation.ADDITION
+        }
+
+        button_subtract.setOnClickListener {
+            storeFirstInput()
+            inputDisplay.text = inputDisplay.text.toString() + " -"
+            operation = Operation.SUBTRACTION
+        }
+
+        button_multiply.setOnClickListener {
+            storeFirstInput()
+            inputDisplay.text = inputDisplay.text.toString() + " *"
+            operation = Operation.MULTIPLICATION
+        }
+
+        button_divide.setOnClickListener {
+            storeFirstInput()
+            inputDisplay.text = inputDisplay.text.toString() + " /"
+            operation = Operation.DIVISION
+        }
 
 //        button_equals.setOnClickListener {
-//            val secondNumber: Double = outputDisplay.text.toString().toDouble()
+//            val secondNumber: Double = currentInput.toDouble()
 //            var result = 0.0
 //
 //            if (operation == Operation.ADDITION) {
@@ -163,13 +166,15 @@ class MainActivity : AppCompatActivity() {
         inputDisplay.text = ""
         outputDisplay.text = "0"
         currentInput = ""
-        lastInput = ""
         decimal = false
         operation = null
     }
 
     private fun storeFirstInput() {
         firstInput = currentInput.toDouble()
+        currentInput = ""
+        Log.d("First Input: ", firstInput.toString())
+        Log.d("Current input", currentInput)
     }
 
     private fun isWhole(number: Double): Boolean {
