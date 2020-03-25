@@ -22,13 +22,13 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/calcDisplay"
+        app:layout_constraintBottom_toTopOf="@+id/outputDisplay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/calcDisplay"
+        android:id="@+id/outputDisplay"
         android:layout_width="0dp"
         android:layout_height="95dp"
         android:layout_marginStart="2dp"
@@ -57,7 +57,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_num7"
         app:layout_constraintEnd_toStartOf="@+id/button_posneg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/outputDisplay" />
 
     <Button
         android:id="@+id/button_posneg"
@@ -69,7 +69,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_num8"
         app:layout_constraintEnd_toStartOf="@+id/button_percent"
         app:layout_constraintStart_toEndOf="@+id/button_cancel"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/outputDisplay" />
 
     <Button
         android:id="@+id/button_percent"
@@ -81,7 +81,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_num9"
         app:layout_constraintEnd_toStartOf="@+id/button_divide"
         app:layout_constraintStart_toEndOf="@+id/button_posneg"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/outputDisplay" />
 
     <Button
         android:id="@+id/button_divide"
@@ -94,7 +94,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_multiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_percent"
-        app:layout_constraintTop_toBottomOf="@+id/calcDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/outputDisplay" />
 
     <Button
         android:id="@+id/button_num7"
