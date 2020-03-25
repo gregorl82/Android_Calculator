@@ -23,21 +23,33 @@ class MainActivity : AppCompatActivity() {
 
         // TODO Change posneg button to display 0 instead of 0.0
 
-//        button_posneg.setOnClickListener {
-//            var current: Double = outputDisplay.text.toString().toDouble()
-//
-//            current = 0 - current
-//
-//            outputDisplay.text = current.toString()
-//        }
-//
-//        button_percent.setOnClickListener {
-//            var current: Double = outputDisplay.text.toString().toDouble()
-//
-//            current /= 100
-//
-//            outputDisplay.text = current.toString()
-//        }
+        button_posneg.setOnClickListener {
+            var current: Double = currentInput.toDouble()
+
+            current = 0 - current
+
+            if (current < 0) {
+                inputDisplay.text = inputDisplay.text.toString() + " (-"
+            }
+
+            if (current > 0) {
+                inputDisplay.text = inputDisplay.text.toString() + " (+"
+            }
+
+            currentInput = current.toString()
+
+
+        }
+
+        button_percent.setOnClickListener {
+            var current: Double = currentInput.toDouble()
+
+            current /= 100
+
+            currentInput = current.toString()
+
+            inputDisplay.text = inputDisplay.text.toString() + " %"
+        }
 
         button_num1.setOnClickListener {
             updateInputDisplay('1')
@@ -119,6 +131,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_equals.setOnClickListener {
+
+            inputDisplay.text = inputDisplay.text.toString() + " ="
+
             val secondNumber: Double = currentInput.toDouble()
             var result = 0.0
 
@@ -148,7 +163,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateInputDisplay(number: Char) {
 
-        if (currentInput.length < 8) {
+        if (currentInput.length < 9) {
 
             val inputDisplayText: String = inputDisplay.text.toString()
 
