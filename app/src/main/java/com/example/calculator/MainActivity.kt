@@ -118,32 +118,32 @@ class MainActivity : AppCompatActivity() {
             operation = Operation.DIVISION
         }
 
-//        button_equals.setOnClickListener {
-//            val secondNumber: Double = currentInput.toDouble()
-//            var result = 0.0
-//
-//            if (operation == Operation.ADDITION) {
-//                result = calculator.add(firstInput, secondNumber)
-//            }
-//
-//            if (operation == Operation.SUBTRACTION) {
-//                result = calculator.subtract(firstInput, secondNumber)
-//            }
-//
-//            if (operation == Operation.MULTIPLICATION) {
-//                result = calculator.multiply(firstInput, secondNumber)
-//            }
-//
-//            if (operation == Operation.DIVISION) {
-//                result = calculator.divide(firstInput, secondNumber)
-//            }
-//
-//            if(isWhole(result)) {
-//                outputDisplay.text = result.toInt().toString()
-//            } else {
-//                outputDisplay.text = result.toString()
-//            }
-//        }
+        button_equals.setOnClickListener {
+            val secondNumber: Double = currentInput.toDouble()
+            var result = 0.0
+
+            if (operation == Operation.ADDITION) {
+                result = calculator.add(firstInput, secondNumber)
+            }
+
+            if (operation == Operation.SUBTRACTION) {
+                result = calculator.subtract(firstInput, secondNumber)
+            }
+
+            if (operation == Operation.MULTIPLICATION) {
+                result = calculator.multiply(firstInput, secondNumber)
+            }
+
+            if (operation == Operation.DIVISION) {
+                result = calculator.divide(firstInput, secondNumber)
+            }
+
+            if(isWhole(result)) {
+                outputDisplay.text = result.toInt().toString()
+            } else {
+                outputDisplay.text = result.toString()
+            }
+        }
     }
 
     private fun updateInputDisplay(number: Char) {
