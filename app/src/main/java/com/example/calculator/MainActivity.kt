@@ -7,6 +7,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    // Functions
+    // TODO Implement running total to chain operations together
+    // TODO Clear input display after each equals
+    // TODO Display 'Err!' on error
+
+    // Layout
+    // TODO Customise buttons to circles
+    // TODO Change background colour of displays to green
+    // TODO Change text colour to black
+
     var currentInput: String = ""
     var operation: Operation? = null
     var firstInput: Double = 0.0
@@ -20,8 +30,6 @@ class MainActivity : AppCompatActivity() {
         button_cancel.setOnClickListener {
             reset()
         }
-
-        // TODO Change posneg button to display 0 instead of 0.0
 
         button_posneg.setOnClickListener {
             var current: Double = currentInput.toDouble()
@@ -37,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             currentInput = current.toString()
-
 
         }
 
@@ -105,6 +112,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
+        // TODO Fix bug for pressing operation button twice
 
         button_add.setOnClickListener {
             storeFirstInput()
