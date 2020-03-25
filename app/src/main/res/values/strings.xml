@@ -19,6 +19,6 @@
     <string name="num0ButtonText">0</string>
     <string name="decimalButtonText">.</string>
     <string name="equalsButtonText">=</string>
-    <string name="inputDisplayText"> </string>
+    <string name="inputDisplayText"></string>
     <string name="calcDisplayText">0</string>
 </resources>

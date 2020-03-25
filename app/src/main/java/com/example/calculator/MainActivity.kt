@@ -2,13 +2,15 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    var currentInput: String = ""
     var lastInput: String = ""
     var operation: Operation? = null
-    var firstNumber: Double = 0.0
+    var firstInput: Double = 0.0
     var calculator = Calculator()
     var decimal: Boolean = false
 
@@ -17,24 +19,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         button_cancel.setOnClickListener {
-            clearDisplays()
+            reset()
         }
 
-        button_posneg.setOnClickListener {
-            var current: Double = calcDisplay.text.toString().toDouble()
+        // TODO Change posneg button to display 0 instead of 0.0
 
-            current = 0 - current
-
-            calcDisplay.text = current.toString()
-        }
-
-        button_percent.setOnClickListener {
-            var current: Double = calcDisplay.text.toString().toDouble()
-
-            current /= 100
-
-            calcDisplay.text = current.toString()
-        }
+//        button_posneg.setOnClickListener {
+//            var current: Double = outputDisplay.text.toString().toDouble()
+//
+//            current = 0 - current
+//
+//            outputDisplay.text = current.toString()
+//        }
+//
+//        button_percent.setOnClickListener {
+//            var current: Double = outputDisplay.text.toString().toDouble()
+//
+//            current /= 100
+//
+//            outputDisplay.text = current.toString()
+//        }
 
         button_num1.setOnClickListener {
             updateInputDisplay('1')
@@ -73,101 +77,99 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_num0.setOnClickListener {
-            if(lastInput != "") {
-                updateInputDisplay('0')
-            }
-            lastInput = "0"
+            updateInputDisplay('0')
         }
 
         button_decimal.setOnClickListener {
-            if(calcDisplay.text.toString() == "0") {
-                inputDisplay.text = "0."
+
+            if (!decimal && currentInput == "") {
+                inputDisplay.text = '.'.toString()
+                currentInput = "0."
                 decimal = true
-            } else if (!decimal) {
+            }
+
+            if (!decimal) {
                 updateInputDisplay('.')
                 decimal = true
             }
 
         }
 
-        button_add.setOnClickListener {
-            storeFirstNumber()
-            operation = Operation.ADDITION
-            clearDisplays()
-        }
+//        button_add.setOnClickListener {
+//            storeFirstInput()
+//            operation = Operation.ADDITION
+//        }
+//
+//        button_subtract.setOnClickListener {
+//            storeFirstInput()
+//            operation = Operation.SUBTRACTION
+//        }
+//
+//        button_multiply.setOnClickListener {
+//            storeFirstInput()
+//            operation = Operation.MULTIPLICATION
+//        }
+//
+//        button_divide.setOnClickListener {
+//            storeFirstInput()
+//            operation = Operation.DIVISION
+//        }
 
-        button_subtract.setOnClickListener {
-            storeFirstNumber()
-            operation = Operation.SUBTRACTION
-            clearDisplays()
-        }
-
-        button_multiply.setOnClickListener {
-            storeFirstNumber()
-            operation = Operation.MULTIPLICATION
-            clearDisplays()
-        }
-
-        button_divide.setOnClickListener {
-            storeFirstNumber()
-            operation = Operation.DIVISION
-            clearDisplays()
-        }
-
-        button_equals.setOnClickListener {
-            val secondNumber: Double = calcDisplay.text.toString().toDouble()
-            var result = 0.0
-
-            if (operation == Operation.ADDITION) {
-                result = calculator.add(firstNumber, secondNumber)
-            }
-
-            if (operation == Operation.SUBTRACTION) {
-                result = calculator.subtract(firstNumber, secondNumber)
-            }
-
-            if (operation == Operation.MULTIPLICATION) {
-                result = calculator.multiply(firstNumber, secondNumber)
-            }
-
-            if (operation == Operation.DIVISION) {
-                result = calculator.divide(firstNumber, secondNumber)
-            }
-
-            if(isWhole(result)) {
-                calcDisplay.text = result.toInt().toString()
-            } else {
-                calcDisplay.text = result.toString()
-            }
-        }
+//        button_equals.setOnClickListener {
+//            val secondNumber: Double = outputDisplay.text.toString().toDouble()
+//            var result = 0.0
+//
+//            if (operation == Operation.ADDITION) {
+//                result = calculator.add(firstInput, secondNumber)
+//            }
+//
+//            if (operation == Operation.SUBTRACTION) {
+//                result = calculator.subtract(firstInput, secondNumber)
+//            }
+//
+//            if (operation == Operation.MULTIPLICATION) {
+//                result = calculator.multiply(firstInput, secondNumber)
+//            }
+//
+//            if (operation == Operation.DIVISION) {
+//                result = calculator.divide(firstInput, secondNumber)
+//            }
+//
+//            if(isWhole(result)) {
+//                outputDisplay.text = result.toInt().toString()
+//            } else {
+//                outputDisplay.text = result.toString()
+//            }
+//        }
     }
 
     private fun updateInputDisplay(number: Char) {
-        val currentDisplayText: String = calcDisplay.text.toString()
 
-        if (currentDisplayText.length < 8) {
+        if (currentInput.length < 8) {
 
-            if (currentDisplayText == "0") {
-                calcDisplay.text = number.toString()
-            } else {
-                calcDisplay.text = currentDisplayText + number.toString()
+            val inputDisplayText: String = inputDisplay.text.toString()
+
+            if (number != '0' || (number == '0' && inputDisplayText != "")) {
+                inputDisplay.text = "${inputDisplayText} ${number}"
+                currentInput += number.toString()
+                Log.d("Current Input: ", currentInput)
             }
 
-            lastInput = number.toString()
         }
 
     }
 
-    private fun clearDisplays() {
-        inputDisplay.text = " "
-        calcDisplay.text = "0"
+    private fun reset() {
+        inputDisplay.text = ""
+        outputDisplay.text = "0"
+        currentInput = ""
         lastInput = ""
         decimal = false
+        operation = null
     }
 
-    private fun storeFirstNumber() {
-        val currentDisplayText: String = calcDisplay.text.toString()
-        firstNumber = currentDisplayText.toDouble()
+    private fun storeFirstInput() {
+        firstInput = currentInput.toDouble()
     }
 
     private fun isWhole(number: Double): Boolean {
